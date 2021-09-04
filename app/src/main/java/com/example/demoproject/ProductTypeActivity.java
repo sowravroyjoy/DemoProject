@@ -12,7 +12,7 @@ public class ProductTypeActivity extends AppCompatActivity {
 
     private CheckBox shirt, seluyar, pent,kamij, tshirt,sharee, panjabi, blaws, payjama,lehenga;
     private Button next;
-    private String product;
+    private String product,name, address, phone, email, received, delivery, gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -234,19 +234,26 @@ public class ProductTypeActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+        address = intent.getStringExtra("address");
+        phone = intent.getStringExtra("phone");
+        email = intent.getStringExtra("email");
+        received = intent.getStringExtra("received");
+        delivery = intent.getStringExtra("delivery");
+        gender = intent.getStringExtra("gender");
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (product != null) {
                     Intent intent = new Intent(ProductTypeActivity.this, ProductActivity.class);
-                    intent.putExtra("name", intent.getStringExtra("name"));
-                    intent.putExtra("address", intent.getStringExtra("address"));
-                    intent.putExtra("phone", intent.getStringExtra("phone"));
-                    intent.putExtra("email", intent.getStringExtra("email"));
-                    intent.putExtra("received", intent.getStringExtra("received"));
-                    intent.putExtra("delivery", intent.getStringExtra("delivery"));
-                    intent.putExtra("gender", intent.getStringExtra("gender"));
+                    intent.putExtra("name", name);
+                    intent.putExtra("address", address);
+                    intent.putExtra("phone", phone);
+                    intent.putExtra("email", email);
+                    intent.putExtra("received", received);
+                    intent.putExtra("delivery", delivery);
+                    intent.putExtra("gender", gender);
                     intent.putExtra("product", product);
                     startActivity(intent);
                 }

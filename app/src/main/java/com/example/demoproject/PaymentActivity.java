@@ -123,7 +123,7 @@ public class PaymentActivity extends AppCompatActivity {
                 pDialog.show();
                 if(validate()){
                     firebaseDatabase = FirebaseDatabase.getInstance();
-                    databaseReference = firebaseDatabase.getReference("customers");
+                    databaseReference = firebaseDatabase.getReference("customers").child(phone);
 
                     Model model = new Model(payment, pPayable, pDues, pPaid, name, address, phone, email, received, delivery, gender, product, length, chest, hand, leg, shoulder, neck);
 

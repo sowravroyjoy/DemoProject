@@ -14,7 +14,7 @@ public class ProductActivity extends AppCompatActivity {
 
     private TextInputEditText length, shoulder, neck, chest, hand, leg;
     private Button next;
-    private String pLength, pShoulder, pNeck, pChest, pHand, pLeg;
+    private String pLength, pShoulder, pNeck, pChest, pHand, pLeg,name, address, phone, email, received, delivery, gender, product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +30,28 @@ public class ProductActivity extends AppCompatActivity {
         next = findViewById(R.id.p_next);
 
         Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+        address = intent.getStringExtra("address");
+        phone = intent.getStringExtra("phone");
+        email = intent.getStringExtra("email");
+        received = intent.getStringExtra("received");
+        delivery = intent.getStringExtra("delivery");
+        gender = intent.getStringExtra("gender");
+        product = intent.getStringExtra("product");
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (validate()) {
                     Intent intent = new Intent(ProductActivity.this, PaymentActivity.class);
-                    intent.putExtra("name", intent.getStringExtra("name"));
-                    intent.putExtra("address", intent.getStringExtra("address"));
-                    intent.putExtra("phone", intent.getStringExtra("phone"));
-                    intent.putExtra("email", intent.getStringExtra("email"));
-                    intent.putExtra("received", intent.getStringExtra("received"));
-                    intent.putExtra("delivery", intent.getStringExtra("delivery"));
-                    intent.putExtra("gender", intent.getStringExtra("gender"));
-                    intent.putExtra("product", intent.getStringExtra("product"));
+                    intent.putExtra("name", name);
+                    intent.putExtra("address", address);
+                    intent.putExtra("phone", phone);
+                    intent.putExtra("email", email);
+                    intent.putExtra("received", received);
+                    intent.putExtra("delivery", delivery);
+                    intent.putExtra("gender", gender);
+                    intent.putExtra("product", product);
                     intent.putExtra("length",pLength);
                     intent.putExtra("chest", pChest);
                     intent.putExtra("hand", pHand);
